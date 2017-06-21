@@ -1,0 +1,31 @@
+//https://www.hackerrank.com/contests/w33/challenges/pattern-count
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+class Solution {
+
+    static int patternCount(string s){
+        // Complete this function
+        int count = 0;
+        string pattern = "0+";
+        Regex rgx = new Regex(pattern);
+        string sb = rgx.Replace(s,"0");
+        int n = sb.Length;
+        for(int i=0;i<n-2;i++){
+            if(sb.Substring(i,3) == "101")
+                count++;
+        }
+        return count;
+    }
+
+    static void Main(String[] args) {
+        int q = Convert.ToInt32(Console.ReadLine());
+        for(int a0 = 0; a0 < q; a0++){
+            string s = Console.ReadLine();
+            int result = patternCount(s);
+            Console.WriteLine(result);
+        }
+    }
+}
